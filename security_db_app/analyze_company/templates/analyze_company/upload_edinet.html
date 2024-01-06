@@ -1,0 +1,18 @@
+{% comment %} {% extends "analyze_company/base.html" %} {% endcomment %}
+{% load static %}
+{% block title %}Edinet データアップロード{% endblock %}
+
+{% block content %}
+<script>
+$(function(){
+  $('.dropify').dropify();
+})
+</script>
+<h3>アップロードするよ</h3>
+<form action="{% url 'upload_edinet' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" class="dropify" data-default-file="ファイルを選択してください" name="csv">
+  <button type="submit" class="btn" name="button">アップロード</button>
+</form>
+
+{% endblock content %}
